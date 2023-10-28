@@ -12,8 +12,8 @@ odoo.define('waiter_pos.order', function(require) {
      var QWeb = core.qweb;
      var _t = core._t;
 
-     models.load_fields('product.product', 'local_name');
-     models.load_fields('product.template', 'local_name');
+     models.load_fields('product.product', ['local_name']);
+     models.load_fields('product.template', ['local_name']);
 
      var _order_super = models.Order.prototype;
      models.Order = models.Order.extend({
@@ -22,6 +22,7 @@ odoo.define('waiter_pos.order', function(require) {
             },
             init_from_JSON: function (json) {
                 this.freight_charge = json.freight_charge || 0
+                this.total_discount_amt = json.total_discount_amt || 0
                 _order_super.init_from_JSON.apply(this, arguments);
             },
             set_freight_charge: function(charge){
@@ -31,13 +32,40 @@ odoo.define('waiter_pos.order', function(require) {
             get_freight_charge: function(){
                 return this.freight_charge || 0
             },
+            set_total_discount_amt:function(){
+                 this.total_discount_amt = this.get_lines_discount_amt() + this.get_total_discount()
+                 this.trigger('change', this)
+                 return this.total_discount_amt
+            },
+            get_lines_discount_amt:function(){
+                var orderlines = this.get_orderlines()
+                var discounts = []
+                if(orderlines){
+                    _.each(orderlines, function(line){
+                        if(line.is_program_reward){
+                            console.log('ananadss',line)
+                            discounts.push(-(line.price))
+                        }
+                    });
+                }
+                console.log(discounts)
+                var sum = 0
+                for(var i=0;i<discounts.length;i++){
+                    sum += discounts[i]
+                }
+                return sum || 0
+            },
+            get_total_discount_amount:function(){
+                return this.total_discount_amt || 0
+            },
             get_total_with_tax: function() {
                 var result = _order_super.get_total_with_tax.apply(this, arguments);
-                return result - this.get_freight_charge()
+                return result + parseFloat(this.get_freight_charge());
             },
             export_as_JSON: function() {
                 let json = _order_super.export_as_JSON.apply(this, arguments);
                 json.freight_charge = this.get_freight_charge()
+                json.total_discount_amt = this.total_discount_amt
                 return json
             },
             export_for_printing: function () {

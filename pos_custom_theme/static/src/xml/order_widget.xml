@@ -40,12 +40,13 @@
                                 <th>S#</th>
                                 <th>Product</th>
 <!--                                <th>Description</th>-->
-                                <th>Note</th>
+<!--                                <th>Note</th>-->
                                 <th>Unit</th>
                                 <th>Qty</th>
                                 <th>Discount</th>
 <!--                                <th>Lot</th>-->
                                 <th>Rate</th>
+                                <th>Tax</th>
                                 <th>Total</th>
                             </tr>
                             </thead>

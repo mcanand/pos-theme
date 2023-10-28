@@ -30,13 +30,15 @@
 <!--               <td>-->
 <!--                   <t t-if="props.line.product.default_code" t-esc="props.line.product.default_code"/>-->
 <!--               </td>-->
-              <td>
-                  <t t-if="customerNote" t-esc="customerNote" />
-              </td>
+<!--              <td>-->
+<!--                  <t t-if="customerNote" t-esc="customerNote" />-->
+<!--              </td>-->
                <td>
                    <t t-esc="props.line.get_unit().name" />
                </td>
-               <td><t t-esc="props.line.get_quantity_str()" /></td>
+               <td>
+                   <t t-esc="props.line.get_quantity_str()"/>
+               </td>
               <td>
                   <span class="info" t-if="props.line.get_discount_str() !== '0'">
                         With a
@@ -60,9 +62,12 @@
                <td>
                    <t t-esc="env.pos.format_currency(props.line.get_unit_display_price())" />
                </td>
+              <td>
+                  <t t-esc="env.pos.format_currency(props.line.get_tax())"/>
+              </td>
                <td>
                     <span class="price">
-                        <t t-esc="env.pos.format_currency(props.line.get_display_price())"/>
+                        <t t-esc="env.pos.format_currency(props.line.get_price_with_tax())"/>
                     </span>
                </td>
           </tr>

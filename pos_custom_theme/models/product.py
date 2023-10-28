@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from odoo.tools import format_amount
 
 
 class ProductProduct(models.Model):
@@ -19,6 +20,8 @@ class ProductTemplate(models.Model):
             related_vals = {}
             if vals.get('local_name'):
                 related_vals['local_name'] = vals['local_name']
+            if vals.get('tax_amount'):
+                related_vals['tax_amount'] = vals['tax_amount']
             if related_vals:
                 template.write(related_vals)
         return templates
@@ -26,13 +29,14 @@ class ProductTemplate(models.Model):
     @api.depends_context('company')
     @api.depends('product_variant_ids', 'product_variant_ids.local_name')
     def _compute_local_name(self):
-        # Depends on force_company context because standard_price is company_dependent
-        # on the product_product
-        unique_variants = self.filtered(lambda template: len(template.product_variant_ids) == 1)
-        for template in unique_variants:
-            template.local_name = template.product_variant_ids.local_name
-        for template in (self - unique_variants):
-            template.local_name = ''
+        for rec in self:
+            # Depends on force_company context because standard_price is company_dependent
+            # on the product_product
+            unique_variants = rec.filtered(lambda template: len(template.product_variant_ids) == 1)
+            for template in unique_variants:
+                template.local_name = template.product_variant_ids.local_name
+            for template in (rec - unique_variants):
+                template.local_name = ''
 
     def _set_local_name(self):
         for template in self:

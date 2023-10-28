@@ -7,12 +7,12 @@
                     <div class="entry total">
                         <span class="badge">Total: </span>
                         <span class="value">
-                            <t t-esc="props.total" />
+                            <t t-esc="props.total"/>
                         </span>
                         <div t-if="props.tax" class="subentry">
                             Taxes:
                             <span class="value">
-                                <t t-esc="props.tax" />
+                                <t t-esc="props.tax"/>
                             </span>
                         </div>
                     </div>
@@ -20,35 +20,99 @@
               </div>
              <div class="" t-if="env.pos.config.themes == 'theme_new'">
                  <div class="total_section line">
-                    <button class="button order-toal">
+                     <button class="button order-toal">
                          Total:<br/>
-                            <span class="value">
-                                <t t-esc="env.pos.format_currency(env.pos.get_order().get_subtotal())" />
+                         <span class="value">
+                                <t t-esc="env.pos.format_currency(env.pos.get_order().get_subtotal())"/>
                             </span>
                      </button>
                      <button class="button order-tax">
                          Taxes:<br/>
-                            <span class="value">
-                                <t t-esc="env.pos.format_currency(env.pos.get_order().get_total_tax())" />
+                         <span class="value">
+                                <t t-esc="env.pos.format_currency(env.pos.get_order().get_total_tax())"/>
                             </span>
-                     </button>
-                     <button class="button discounts">
-                         <ActivePrograms/>
                      </button>
                      <button class="button order-tax">
                          Freight:<br/>
-                            <span class="value">
-                                <t t-esc="env.pos.format_currency(env.pos.get_order().get_freight_charge())" />
+                         <span class="value">
+                                <t t-esc="env.pos.format_currency(env.pos.get_order().get_freight_charge())"/>
                             </span>
+                     </button>
+                     <button class="button discounts">
+                        Discount:<br/>
+                         <t t-esc="env.pos.format_currency(-env.pos.get_order().get_total_discount_amount())"/>
                      </button>
                      <button class="button order-grand-total">
                         Grand Total:<br/>
-                        <span class="value">
-                            <t t-esc="env.pos.format_currency(env.pos.get_order().get_total_with_tax())" />
+                         <span class="value">
+                            <t t-esc="env.pos.format_currency(env.pos.get_order().get_total_with_tax())"/>
                         </span>
                     </button>
                  </div>
+                 <ActivePrograms/>
              </div>
+         </xpath>
+     </t>
+    <t t-inherit="pos_coupon.ActivePrograms" t-inherit-mode="extension">
+         <xpath expr="//div" position="replace">
+              <div class="active-programs" t-if="env.pos.config.themes=='default'">
+            <div t-if="currentOrder and renderParams.show">
+                <div class="title">Active Programs</div>
+                <t t-foreach="renderParams.withRewardsPromoPrograms" t-as="program" t-key="program.id">
+                    <div>
+                        <t t-esc="program.name"/>
+                        <span t-if="program.promo_code !== false">
+                            (<t t-esc="program.promo_code"/>)
+                        </span>
+                    </div>
+                </t>
+                <t t-foreach="renderParams.withRewardsBookedCoupons" t-as="coupon" t-key="coupon.coupon_code">
+                    <div>
+                        <t t-esc="coupon.program_name"/>
+                        (<t t-esc="coupon.coupon_code"/>)
+                    </div>
+                </t>
+                <t t-foreach="renderParams.onNextOrderPromoPrograms" t-as="program" t-key="program.id">
+                    <div style="font-style: italic;">
+                        <t t-esc="program.name"/>
+                        <span t-if="program.promo_code !== false">
+                            (<t t-esc="program.promo_code"/>)
+                        </span>
+                    </div>
+                </t>
+            </div>
+        </div>
+             <div class="active-programs" t-if="env.pos.config.themes=='theme_new'">
+            <div t-if="currentOrder and renderParams.show">
+                <div class="title">Active Programs</div>
+                <table>
+                    <tr>
+                        <t t-foreach="renderParams.withRewardsPromoPrograms" t-as="program" t-key="program.id">
+                    <td>
+                        <t t-esc="program.name"/>
+                        <span t-if="program.promo_code !== false">
+                            (<t t-esc="program.promo_code"/>)
+                        </span>
+                    </td>
+                </t>
+                        <t t-foreach="renderParams.withRewardsBookedCoupons" t-as="coupon" t-key="coupon.coupon_code">
+                    <td>
+                        <t t-esc="coupon.program_name"/>
+                        (<t t-esc="coupon.coupon_code"/>)
+                    </td>
+                </t>
+                        <t t-foreach="renderParams.onNextOrderPromoPrograms" t-as="program" t-key="program.id">
+                    <td style="font-style: italic;">
+                        <t t-esc="program.name"/>
+                        <span t-if="program.promo_code !== false">
+                            (<t t-esc="program.promo_code"/>)
+                        </span>
+                    </td>
+                </t>
+                    </tr>
+                </table>
+            </div>
+        </div>
          </xpath>
      </t>
 </templates>
