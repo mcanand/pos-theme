@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+     <t t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension">
+         <xpath expr="//div" position="replace">
+
+             <div class="order-container" t-ref="scrollable" t-if="env.pos.config.themes == 'default'">
+                <div class="order">
+                    <t t-if="orderlinesArray.length === 0" >
+                        <div class='order-empty'>
+                            <i class='fa fa-shopping-cart' role="img" aria-label="Shopping cart"
+                               title="Shopping cart"/>
+                            <h1>This order is empty</h1>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <ul class="orderlines">
+                            <t t-foreach="orderlinesArray" t-as="orderline" t-key="orderline.id">
+                                <Orderline line="orderline" />
+                            </t>
+                        </ul>
+                        <OrderSummary total="state.total" tax="state.tax" />
+                    </t>
+                </div>
+            </div>
+
+             <div class="order-container" t-ref="scrollable" t-if="env.pos.config.themes == 'theme_new'">
+                <div class="order">
+                    <t t-if="orderlinesArray.length === 0" >
+                        <div class='order-empty'>
+                            <i class='fa fa-shopping-cart' role="img" aria-label="Shopping cart"
+                               title="Shopping cart"/>
+                            <h1>This order is empty</h1>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div class="fixTableHead">
+                        <table class="orderlines">
+                            <thead>
+                            <tr>
+                                <th>S#</th>
+                                <th>Product</th>
+<!--                                <th>Description</th>-->
+                                <th>Note</th>
+                                <th>Unit</th>
+                                <th>Qty</th>
+                                <th>Discount</th>
+<!--                                <th>Lot</th>-->
+                                <th>Rate</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="count" t-value="1"/>
+                            <t t-foreach="orderlinesArray" t-as="orderline" t-key="orderline.id">
+                                <OrderlineTable line="orderline" count="count"/>
+                                <t t-set="count" t-value="count + 1"/>
+                            </t>
+                            </tbody>
+                        </table>
+                             <OrderSummary total="state.total" tax="state.tax" freight="state.freight_charge"/>
+                        </div>
+
+                    </t>
+                </div>
+
+            </div>
+
+
+         </xpath>
+     </t>
+</templates>

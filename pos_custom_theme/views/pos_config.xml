@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="pos_config_form_view_theme_inherit" model="ir.ui.view">
+        <field name="name">pos.config.form.view.theme.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_setting_box')]" position="after">
+                <div class="col-12 col-lg-6 o_setting_box" id="themes">
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Themes</span>
+                        <div class="text-muted">
+                            Choose A theme for pos
+                        </div>
+                        <div class="content-group mt16">
+                            <field name="themes" colspan="4" nolabel="1" required="1" options="{'no_create': True}"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='payment_methods_new']" position="after">
+                <div class="col-12 col-lg-6 o_setting_box" id="fast_payment_method">
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Fast Payment Method</span>
+                        <div class="text-muted">
+                            Choose Fast Payment method
+                        </div>
+                        <div class="content-group mt16">
+                            <field name="fast_payment_method_id" colspan="4" nolabel="1" required="1"
+                                   options="{'no_create': True}"/>
+                        </div>
+                        <div>
+                            <button name="%(point_of_sale.action_payment_methods_tree)d" icon="fa-arrow-right"
+                                    type="action"
+                                    string="Payment Methods" class="btn-link"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='pricelist_setting']" position="after">
+                <div class="col-12 col-lg-6 o_setting_box" id="freight_charge">
+                    <div class="o_setting_left_pane">
+
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="freight_charge" string="Freight / Delivery Charge"/>
+                        <div class="content-group mt16">
+                            <div class="row mt16">
+                                <label string="Freight Charge" for="freight_charge"
+                                       class="col-lg-3 o_light_label"/>
+                                <field name="freight_charge"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

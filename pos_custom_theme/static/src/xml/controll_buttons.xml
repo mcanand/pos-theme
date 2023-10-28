@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.ProductInfoButton" t-inherit-mode="extension">
+        <xpath expr="//div" position="replace">
+            <div></div>
+            <div class="control-button" t-if="env.pos.config.themes == 'default'">
+                <i class="fa fa-info-circle" role="img" aria-label="Info" title="Info"/>
+                Info
+            </div>
+        </xpath>
+    </t>
+    <t t-inherit="point_of_sale.OrderlineCustomerNoteButton" t-inherit-mode="extension">
+        <xpath expr="//div" position="replace">
+            <div></div>
+            <div class="control-button" t-if="env.pos.config.themes == 'default'">
+                <i class="fa fa-sticky-note"/>
+                    <span> </span>
+                    <span>Customer Note</span>
+            </div>
+        </xpath>
+    </t>
+</templates>

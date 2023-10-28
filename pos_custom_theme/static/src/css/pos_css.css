@@ -1,0 +1,204 @@
+/*.pos .subpads .control-button {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+
+    background: #e2e2e2;
+    border: 1px solid ##bfbfbf;
+    display: inline-block;
+    line-height: 38px;
+    padding: 10px !important;
+    text-align: center;
+    *//*border-radius: 0px !important;*//*
+    font-size: 18px;
+    margin-left: 6px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all linear 150ms;
+}*/
+/*.pos .subpads .control-button:hover{
+    background-color: #eee;
+}*/
+.pos .numpad{
+    width:100% !important;
+}
+.pos .numpad button{
+    width:14.2% !important;
+    height: 100px !important;
+    transition: none !important;
+}
+.pos .numpad .button{
+    font-size: 17px;
+}
+.pos .subpads .control-buttons{
+    margin-bottom: 0px !important;
+    padding:10px !important;
+    margin-top: -4.7vw;
+}
+.pos .rightpane{
+    width:775px !important;
+}
+.pos .leftpane{
+    max-width: 575px !important;
+}
+.pos .control-buttons-main{
+    text-align: center;
+    width: 434px;
+    margin: 16px;
+    display: table;
+    margin-top: -57px;
+    margin-left: 0px;
+    border: none;
+    border-radius: 0;
+    border-top: 1px solid;
+    border-color: #bfbfbf;
+    border-top-right-radius: 4px;
+    min-width: 216px;
+}
+.pos .control-buttons-main button{
+    float: left;
+    height: 100px;
+    width: 138px;
+    font-weight: bold;
+    vertical-align: middle;
+    color: #555555;
+    border-radius: 0;
+    font-size: 17px;
+    border: none;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #bfbfbf;
+}
+.pos .control-buttons-main button:hover{
+    background-color:#f0eeee;
+}
+.pos .actionpadnew{
+    padding:6px;
+    display: -webkit-flex;
+    display: flex;
+    background-color: #f0eeee;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    margin-bottom: -6px;
+}
+
+.pos .actionpadnew button {
+    flex-grow: 1;
+    min-width: 10%;
+    background: #e2e2e2;
+    border: 1px solid #bfbfbf;
+    display: inline-block;
+    /* line-height: 38px; */
+    padding: 10px !important;
+    text-align: center;
+    border-radius: 0px;
+    font-size: 18px;
+    margin-left: 6px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all linear 150ms;
+}
+.pos .actionpadnew button:hover{
+    background-color:#eee;
+}
+.pos .actionpadnew .button-input{
+    padding:0px !important;
+    background:none !important;
+    border: 0px solid !important;
+}
+.pos .actionpadnew .button-input input{
+    width: 96%;
+    height: 100%;
+    border:none;
+    font-size:17px;
+    padding: 0px 6px;
+}
+.pos .actionpadnew .button-input input:focus{
+    border:none;
+    outline:none;
+}
+
+.pos .total_section {
+
+    width: 575px;
+    position:fixed;
+    bottom:0;
+
+}
+.pos .total_section button{
+    float: left;
+    height: 98px;
+    width: 115px;
+    font-weight: bold;
+    font-size: 16px;
+    vertical-align: middle;
+    color: #555555;
+    border-radius: 0;
+    border: none;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #bfbfbf;
+}
+.pos .order .active-programs {
+    padding-top: 0px !important;
+    font-weight: normal;
+    font-size: 80%;
+    text-align: unset;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+/*.pos .orderlines{
+    overflow-y:scroll;
+}*/
+.pos .order{
+    max-width:100% !important;
+    height:98%;
+    padding-top:0px !important;
+}
+.fixTableHead {
+      overflow-y: auto;
+      height: 84%;
+      transition: all linear 150ms;
+}
+.pos .fixTableHead thead th {
+      position: sticky;
+      top: 0;
+      transition: all linear 150ms;
+      border: 1px solid black;
+}
+.pos .fixTableHead table {
+      border-collapse: collapse;
+      width: 100%;
+      transition: all linear 150ms;
+}
+.pos .fixTableHead th, .pos .fixTableHead td {
+      padding: 5px 7px;
+      border: 1px solid black;
+      transition: all linear 150ms;
+}
+.pos .fixTableHead th {
+    border: 1px solid black;
+  background: #e2e2e2;
+  transition: all linear 150ms;
+}
+
+.pos .category-list.simple {
+    padding: 0px;
+    background: #cecece;
+    display: flex;
+    /* flex: 1; */
+    width: 613px;
+    overflow-x: scroll;
+}
+.pos .category-simple-button{
+    min-width: 85px;
+}
+.search-bar-portal .search-box input{
+    width: 150px;
+    border-radius: 0px !important;
+}
+.search-bar-portal, .search-bar-portal .search-box{
+    flex: 0 !important;
+
+}
