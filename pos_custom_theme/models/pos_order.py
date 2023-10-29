@@ -21,3 +21,9 @@ class PosOrder(models.Model):
         order_fields = super(PosOrder, self)._order_fields(ui_order)
         order_fields['freight_charge'] = ui_order.get('freight_charge')
         return order_fields
+
+    @api.model
+    def get_last_invoice(self):
+        invoice = self.env['account.move'].search([('pos_order_ids','!=', False)], limit=1).name
+        return invoice if invoice else 'No Invoice'
+

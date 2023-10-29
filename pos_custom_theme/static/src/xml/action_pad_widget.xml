@@ -35,7 +35,7 @@
             </button>
             <button class="button order-date" width="50">
                  Invoice No<br/>
-<!--                <t t-esc="env.pos.get_order().creation_date.toLocaleDateString()"/>-->
+                <t t-esc="env.pos.get_invoice_number()"/>
             </button>
              <button class="button order-date" width="50">
                  Invoice Date<br/>
@@ -82,10 +82,10 @@
             <button class="button orders-show" t-on-click="ClickShowOrders()">
                 <i class="fa fa-folder"/>
             </button>
-            <button class="button orders-previous" t-on-click="ClickShowOrders()">
+            <button class="button orders-previous" t-on-click="ClickPrevOrders()">
                 <i class="fa fa-angle-left"/>
             </button>
-            <button class="button orders-next" t-on-click="ClickShowOrders()">
+            <button class="button orders-next" t-on-click="ClickNextOrders()">
                 <i class="fa fa-angle-right"/>
             </button>
         </div>

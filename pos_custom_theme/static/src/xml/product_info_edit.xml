@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ProductInfoEditPopup" owl="1">
+       <div role="dialog" class="modal-dialog">
+            <Draggable>
+                <div class="popup popup-selection">
+                    <header class="title drag-handle">
+                        <t t-esc="props.title"/>
+                    </header>
+                    <div class="selection scrollable-y ProductInfoEditPopup">
+                        <t t-if="props.line">
+                            <input type="text" autofocus="True" name="name" t-att-value="props.line.product.display_name" t-on-keyup="onKeyUpDiscountAmt"/>
+                            <input type="text" name="barcode" t-att-value="props.line.product.barcode" t-on-keyup="onKeyUpDiscountAmt"/>
+                            <table class="">
+                                <tr>
+                                    <td>Rate:</td>
+                                    <td><input type="text" name="rate" t-att-value="props.line.price" t-on-keyup="onKeyUpDiscountAmt"/></td>
+                                    <td>Discount:</td>
+                                    <td><input type="text" name="discount_amt" t-att-value="props.line.discount" t-on-keyup="onKeyUpDiscountAmt"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Qty:</td>
+                                    <td><input type="text" name="qty" t-att-value="props.line.quantity" t-on-keyup="onKeyUpDiscountAmt"/></td>
+                                    <td>Discount(%):</td>
+                                    <td><input type="text" name="discount_perc" t-att-value="props.line.discount"  t-on-keyup="onKeyUpDiscountAmt"/></td>
+                                </tr>
+                            </table>
+
+                        </t>
+                        <t t-else="">
+                            No Products Found in Order
+                        </t>
+                    </div>
+                    <footer class="footer">
+                        <div class="button confirm" t-on-click="confirm">
+                            <t t-esc="props.confirmText"/>
+                        </div>
+                        <div class="button cancel" t-on-click="cancel">
+                            <t t-esc="props.cancelText"/>
+                        </div>
+                    </footer>
+                </div>
+            </Draggable>
+        </div>
+    </t>
+</templates>

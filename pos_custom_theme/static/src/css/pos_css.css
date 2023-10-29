@@ -1,3 +1,63 @@
+.pos .pos-rightheader > *{
+    border-right:1px solid #435c92 !important;
+}
+.pos .pos-topheader{
+    background:#435c92 !important;
+}
+.pos .login-overlay{
+    background: linear-gradient(to right bottom, #77717e, #4f6299) !important;
+}
+.pos .screen-login{
+    border-radius: 10px !important;
+}
+.pos .login-button {
+    color: #000 !important;
+    border-radius: 10px !important;
+
+}
+.pos .pane-border{
+    border-right: 3px solid #435c92 !important;
+}
+/*popups*/
+.pos .modal-dialog .popup{
+    border-radius: 10px !important;
+}
+.pos .popup .title{
+    border-radius: 10px !important;
+}
+.pos .popup .button{
+    border-radius: 10px !important;
+    color: black;
+}
+.pos .popup-numpad .input-button, .pos .popup-numpad .mode-button{
+    border-radius: 10px !important;
+}
+.pos .popup input, .pos .popup-input{
+    border-radius:10px !important;
+}
+/*products*/
+.pos .product .price-tag{
+    border-radius:10px !important;
+    background: #435c92 !important;
+}
+.pos .product .product-info-button{
+    border-radius:10px !important;
+    background: #435c92 !important;
+}
+.pos .product{
+    border-radius: 10px !important;
+}
+/*search product*/
+.search-bar-portal .search-box .database-icon{
+    color:#435c92 !important;
+}
+.search-bar-portal .search-box .icon{
+    color:#435c92 !important;
+}
+.search-bar-portal .search-box .clear-icon{
+     color:#435c92 !important;
+}
+
 /*.pos .subpads .control-button {
     -webkit-flex-grow: 1;
     flex-grow: 1;
@@ -27,8 +87,14 @@
     height: 100px !important;
     transition: none !important;
 }
+.pos .numpad .button-theme{
+    background: #aee1ff;
+}
 .pos .numpad .button{
     font-size: 17px;
+}
+.pos .mode-button.selected-mode{
+    background:#46cb88 !important;
 }
 .pos .subpads .control-buttons{
     margin-bottom: 0px !important;
@@ -49,7 +115,7 @@
     margin-top: -57px;
     margin-left: 0px;
     border: none;
-    border-radius: 0;
+    border-radius: 10px;
     border-top: 1px solid;
     border-color: #bfbfbf;
     border-top-right-radius: 4px;
@@ -62,7 +128,7 @@
     font-weight: bold;
     vertical-align: middle;
     color: #555555;
-    border-radius: 0;
+    border-radius: 10px;
     font-size: 17px;
     border: none;
     border-right: 1px solid;
@@ -85,13 +151,14 @@
 .pos .actionpadnew button {
     flex-grow: 1;
     min-width: 10%;
-    background: #e2e2e2;
-    border: 1px solid #bfbfbf;
+    background: #fff;
+    border: 0px solid #bfbfbf;
     display: inline-block;
     /* line-height: 38px; */
     padding: 10px !important;
     text-align: center;
-    border-radius: 0px;
+    border-radius: 10px;
+    color: #435c92;
     font-size: 18px;
     margin-left: 6px;
     margin-bottom: 6px;
@@ -134,7 +201,7 @@
     font-size: 16px;
     vertical-align: middle;
     color: #555555;
-    border-radius: 0;
+    border-radius: 10px;
     border: none;
     border-right: 1px solid;
     border-bottom: 1px solid;
@@ -196,9 +263,15 @@
 }
 .search-bar-portal .search-box input{
     width: 150px;
-    border-radius: 0px !important;
+    border-radius: 10px !important;
 }
 .search-bar-portal, .search-bar-portal .search-box{
     flex: 0 !important;
 
+}
+/*.ProductInfoEditPopup input{
+    width:50% !important;
+}*/
+.ProductInfoEditPopup{
+    width:100%;
 }

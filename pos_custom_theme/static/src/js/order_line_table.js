@@ -6,7 +6,6 @@ odoo.define('pos_custom_theme.OrderlineTable', function(require) {
 
     class OrderlineTable extends PosComponent {
         selectLine() {
-            console.log(this.props.line)
 //            this.thisrigger('select-line', { OrderlineTable: this.props.line });
             this.env.pos.get_order().select_orderline(this.props.line)
         }

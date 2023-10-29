@@ -43,12 +43,10 @@ odoo.define('waiter_pos.order', function(require) {
                 if(orderlines){
                     _.each(orderlines, function(line){
                         if(line.is_program_reward){
-                            console.log('ananadss',line)
                             discounts.push(-(line.price))
                         }
                     });
                 }
-                console.log(discounts)
                 var sum = 0
                 for(var i=0;i<discounts.length;i++){
                     sum += discounts[i]
@@ -62,6 +60,7 @@ odoo.define('waiter_pos.order', function(require) {
                 var result = _order_super.get_total_with_tax.apply(this, arguments);
                 return result + parseFloat(this.get_freight_charge());
             },
+
             export_as_JSON: function() {
                 let json = _order_super.export_as_JSON.apply(this, arguments);
                 json.freight_charge = this.get_freight_charge()
@@ -95,5 +94,43 @@ odoo.define('waiter_pos.order', function(require) {
                     _super_orderlines.set_quantity.apply(this, arguments);
                 }
             },
+     });
+     var posmodel_super = models.PosModel.prototype;
+     models.PosModel = models.PosModel.extend({
+            get_prev_unpaid_order: function(){
+                var orders = this.get_order_list();
+                var current_order = this.get_order();
+                var prev_seq = current_order.sequence_number - 1;
+                var prev_order = []
+                _.each(orders, function(order){
+                    if(order.sequence_number == prev_seq){
+                        prev_order.push(order);
+                    }
+                });
+                return prev_order
+            },
+             get_invoice_number: function(){
+                var self = this
+                this.rpc({
+                    model: 'pos.order',
+                    method: 'get_last_invoice',
+                }).then(function (result) {
+                    self.invoice = result
+                    self.trigger('change')
+                });
+                return self.invoice
+            },
+            get_next_unpaid_order:function(){
+                var orders = this.get_order_list();
+                var current_order = this.get_order();
+                var prev_seq = current_order.sequence_number + 1;
+                var prev_order = []
+                _.each(orders, function(order){
+                    if(order.sequence_number == prev_seq){
+                        prev_order.push(order);
+                    }
+                });
+                return prev_order
+            }
      });
 });

@@ -6,7 +6,7 @@ odoo.define('pos_custom_theme.order_widget', function (require) {
 
     const PosThemeOrderWidget = (OrderWidget) => class extends OrderWidget {
         _updateSummary() {
-            console.log('absabd', this.order.set_total_discount_amt())
+            this.order.set_total_discount_amt()
             const freight_charge = this.order ? this.order.get_freight_charge() : 0;
             this.state.freight_charge = this.env.pos.format_currency(freight_charge);
             return super._updateSummary(...arguments);

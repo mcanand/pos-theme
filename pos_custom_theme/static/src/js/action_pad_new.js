@@ -8,6 +8,8 @@ odoo.define('pos_custom_theme.ActionPadNew', function(require) {
     const { posbus } = require('point_of_sale.utils');
     const { useRef } = owl.hooks;
     const { debounce } = owl.utils;
+    const { Gui } = require('point_of_sale.Gui');
+
 
     class ActionPadNew extends ProductsWidget{
           constructor() {
@@ -15,20 +17,12 @@ odoo.define('pos_custom_theme.ActionPadNew', function(require) {
           }
           async ClickAddLineDescription(){
                 const selectedOrderline = this.env.pos.get_order().get_selected_orderline();
-                console.log(this.env.pos.get_order())
                 if (!selectedOrderline) return;
-//                const { confirmed, payload: inputNote } = await this.showPopup('ProductInfoEditPopup', {
-//                    startingValue: selectedOrderline.get_customer_note(),
-//                    title: this.env._t('Add Customer Note'),
-//                });
-//
-//
-//                if (confirmed) {
-//                    selectedOrderline.set_customer_note(inputNote);
-//                }
+                if(!selectedOrderline.is_program_reward){
+                    Gui.showPopup('ProductInfoEditPopup')
+                }
           }
           async ClickShowProductInfo(){
-                console.log(this.env.pos.get_order().get_selected_orderline())
                 const orderline = this.env.pos.get_order().get_selected_orderline();
                 if (orderline) {
                     const product = orderline.get_product();
@@ -43,7 +37,6 @@ odoo.define('pos_custom_theme.ActionPadNew', function(require) {
                });
           }
           async ClickQtyUpdatePlus(){
-                console.log(this.env.pos.get_order())
                 var order_line = this.env.pos.get_order().get_selected_orderline()
                 if(order_line){
                     var quantity = order_line.quantity + 1
@@ -97,7 +90,20 @@ odoo.define('pos_custom_theme.ActionPadNew', function(require) {
                 this.env.pos.add_new_order()
             }
         }
-
+        async ClickPrevOrders(){
+            var order = this.env.pos.get_prev_unpaid_order();
+            var options = {}
+            if(order[0]){
+                this.env.pos.set_order(order[0], options)
+            }
+        }
+        async ClickNextOrders(){
+            var order = this.env.pos.get_next_unpaid_order();
+            var options = {}
+            if(order[0]){
+                this.env.pos.set_order(order[0], options)
+            }
+        }
     }
     ActionPadNew.template = 'ActionPadNew';
     ActionPadNew.defaultProps = {

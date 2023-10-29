@@ -43,44 +43,44 @@
             <button class="input-button number-char" t-on-click="sendInput('1')">1</button>
                <button class="input-button number-char" t-on-click="sendInput('2')">2</button>
                <button class="input-button number-char" t-on-click="sendInput('3')">3</button>
-               <button class="mode-button" t-att-class="{'selected-mode': props.activeMode === 'quantity'}"
+               <button class="mode-button button-theme" t-att-class="{'selected-mode': props.activeMode === 'quantity'}"
                        t-on-click="changeMode('quantity')">Qty</button>
 
 
-                 <button class="button" t-on-click="ClickRefund()" t-if="hasPriceControlRights">
+                 <button class="button button-theme" t-on-click="ClickRefund()" t-if="hasPriceControlRights">
                     <i class="fa fa-undo" role="img" aria-label="Refund" title="Refund" />
                     Return
                 </button>
-                  <button class="button" t-on-click="ClickAddFreightCharge()" t-if="hasPriceControlRights">
+                  <button class="button button-theme" t-on-click="ClickAddFreightCharge()" t-if="hasPriceControlRights">
                     <i class="fa fa-plus"/>
                     <span> </span>
                     <span>Freight</span>
                  </button>
-                <button class="button" t-if="hasPriceControlRights">
+                <button class="button button-theme" t-if="hasPriceControlRights">
 
                 </button>
                <br/>
                <button class="input-button number-char" t-on-click="sendInput('4')">4</button>
                <button class="input-button number-char" t-on-click="sendInput('5')">5</button>
                <button class="input-button number-char" t-on-click="sendInput('6')">6</button>
-               <button class="mode-button" t-att-class="{
+               <button class="mode-button button-theme" t-att-class="{
                         'selected-mode': props.activeMode === 'discount',
                         'disabled-mode': !hasManualDiscount
                     }"
                        t-att-disabled="!hasManualDiscount"
                        t-on-click="changeMode('discount')">Disc</button>
 
-                <button class="button" t-on-click="ClickBarcodePromo()" t-if="hasPriceControlRights">
+                <button class="button button-theme" t-on-click="ClickBarcodePromo()" t-if="hasPriceControlRights">
                     <i class="fa fa-barcode"/>
                     <span> </span>
                     <span>Enter Code</span>
                  </button>
-                 <button class="button" t-on-click="ClickResetProgram()" t-if="hasPriceControlRights">
+                 <button class="button button-theme" t-on-click="ClickResetProgram()" t-if="hasPriceControlRights">
                     <i class="fa fa-star"></i>
                     <span> </span>
                     <span>Reset Programs</span>
                 </button>
-                 <button class="button" t-on-click="env.pos.add_new_order()" t-if="hasPriceControlRights">
+                 <button class="button button-theme" t-on-click="env.pos.add_new_order()" t-if="hasPriceControlRights">
                     <i class="fa fa-hand-stop-o" role="img" aria-label="FastPay" title="FastPay"/>
                     Hold
                 </button>
@@ -88,22 +88,22 @@
                <button class="input-button number-char" t-on-click="sendInput('7')">7</button>
                <button class="input-button number-char" t-on-click="sendInput('8')">8</button>
                <button class="input-button number-char" t-on-click="sendInput('9')">9</button>
-               <button class="mode-button" t-att-class="{
+               <button class="mode-button button-theme" t-att-class="{
                     'selected-mode': props.activeMode === 'price',
                     'disabled-mode': !hasPriceControlRights
                 }" t-att-disabled="!hasPriceControlRights"
                        t-on-click="changeMode('price')">Price</button>
 
 
-            <button class="button" t-on-click="ClickOpenDrawer()" t-if="hasPriceControlRights">
+            <button class="button button-theme" t-on-click="ClickOpenDrawer()" t-if="hasPriceControlRights">
                 <i class="fa fa-bars" role="img" aria-label="drawer" title="drawer"/>
                 Drawer
               </button>
-             <button class="button" t-on-click="ClickToPrint()" t-if="hasPriceControlRights">
+             <button class="button button-theme" t-on-click="ClickToPrint()" t-if="hasPriceControlRights">
                 <i class="fa fa-print" role="img" aria-label="print" title="print"/>
                 Print
              </button>
-             <button class="button" t-on-click="showScreen('TicketScreen')" t-if="hasPriceControlRights">
+             <button class="button button-theme" t-on-click="showScreen('TicketScreen')" t-if="hasPriceControlRights">
                  <i class="fa fa-rotate-right" role="img" aria-label="recall" title="recall"/>
                  Recall
              </button>
@@ -115,7 +115,7 @@
                <button class="input-button number-char" t-on-click="sendInput(decimalSeparator)">
                 <t t-esc="decimalSeparator"/>
             </button>
-               <button class="input-button numpad-backspace" t-on-click="sendInput('Backspace')">
+               <button class="input-button button-theme numpad-backspace" t-on-click="sendInput('Backspace')">
                 <img style="pointer-events: none;" src="/point_of_sale/static/src/img/backspace.png"
                      width="24" height="21" alt="Backspace"/>
             </button>

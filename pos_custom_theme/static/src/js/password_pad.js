@@ -69,7 +69,6 @@ odoo.define('point_of_sale.password_pad', function(require) {
             }
         }
         sendInput(key) {
-            console.log('dddd', key)
             this.trigger('numpad-click-input', { key });
         }
         getPayload() {
