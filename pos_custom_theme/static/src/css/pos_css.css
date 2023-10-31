@@ -36,15 +36,23 @@
     border-radius:10px !important;
 }
 /*products*/
-.pos .product .price-tag{
+.pos .product-screen .product .price-tag{
     border-radius:10px !important;
     background: #435c92 !important;
 }
-.pos .product .product-info-button{
+.pos .product-screen .product .product-info-button{
     border-radius:10px !important;
     background: #435c92 !important;
 }
-.pos .product{
+.pos .product-screen .product{
+    border-radius: 10px !important;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+.cash-move .input-amount .input-type{
+    border-radius: 10px !important;
+}
+.pos textarea{
     border-radius: 10px !important;
 }
 /*search product*/
@@ -79,35 +87,39 @@
 /*.pos .subpads .control-button:hover{
     background-color: #eee;
 }*/
-.pos .numpad{
+.pos .product-screen .numpad{
     width:100% !important;
 }
-.pos .numpad button{
+.pos .product-screen .numpad button{
     width:14.2% !important;
     height: 100px !important;
     transition: none !important;
 }
-.pos .numpad .button-theme{
+.pos .product-screen .numpad .button-theme{
     background: #aee1ff;
 }
-.pos .numpad .button{
+.pos .product-screen .numpad .button{
     font-size: 17px;
 }
-.pos .mode-button.selected-mode{
+.pos .product-screen .numpad .button:hover{
+    background: #fff !important;
+    z-index: 10;
+}
+.pos .product-screen .mode-button.selected-mode{
     background:#46cb88 !important;
 }
-.pos .subpads .control-buttons{
+.pos .product-screen .subpads .control-buttons{
     margin-bottom: 0px !important;
     padding:10px !important;
     margin-top: -4.7vw;
 }
-.pos .rightpane{
+.pos .product-screen .rightpane{
     width:775px !important;
 }
-.pos .leftpane{
+.pos .product-screen .leftpane{
     max-width: 575px !important;
 }
-.pos .control-buttons-main{
+.pos .product-screen .control-buttons-main{
     text-align: center;
     width: 434px;
     margin: 16px;
@@ -121,7 +133,7 @@
     border-top-right-radius: 4px;
     min-width: 216px;
 }
-.pos .control-buttons-main button{
+.pos .product-screen .control-buttons-main button{
     float: left;
     height: 100px;
     width: 138px;
@@ -135,20 +147,20 @@
     border-bottom: 1px solid;
     border-color: #bfbfbf;
 }
-.pos .control-buttons-main button:hover{
+.pos .product-screen .control-buttons-main button:hover{
     background-color:#f0eeee;
 }
-.pos .actionpadnew{
+.pos .product-screen .actionpadnew{
     padding:6px;
     display: -webkit-flex;
     display: flex;
-    background-color: #f0eeee;
+    background-color: #d3d3d3;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
     margin-bottom: -6px;
 }
 
-.pos .actionpadnew button {
+.pos .product-screen .actionpadnew button {
     flex-grow: 1;
     min-width: 10%;
     background: #fff;
@@ -166,48 +178,52 @@
     overflow: hidden;
     transition: all linear 150ms;
 }
-.pos .actionpadnew button:hover{
+.pos .product-screen .actionpadnew button:hover{
     background-color:#eee;
 }
-.pos .actionpadnew .button-input{
+.pos .product-screen .actionpadnew .button-input{
     padding:0px !important;
     background:none !important;
     border: 0px solid !important;
 }
-.pos .actionpadnew .button-input input{
+.pos .product-screen .actionpadnew .button-input input{
     width: 96%;
     height: 100%;
     border:none;
     font-size:17px;
     padding: 0px 6px;
 }
-.pos .actionpadnew .button-input input:focus{
+.pos .product-screen .actionpadnew .button-input input:focus{
     border:none;
     outline:none;
 }
 
-.pos .total_section {
+.pos .product-screen .total_section {
 
     width: 575px;
     position:fixed;
     bottom:0;
 
 }
-.pos .total_section button{
+.pos .product-list-container{
+    background: lightgrey;
+}
+.pos .product-screen .total_section button{
     float: left;
     height: 80px;
     width: 115px;
     font-weight: bold;
     font-size: 16px;
     vertical-align: middle;
-    color: #555555;
-    border-radius: 10px;
+    color: black;
+    border-radius: 0px;
+    background: #d3d3d3;
     border: none;
-    border-right: 1px solid;
-    border-bottom: 1px solid;
+    border-right: 1px solid #8496bf !important;
+    border-bottom: 0px solid;
     border-color: #bfbfbf;
 }
-.pos .order .active-programs {
+.pos .product-screen .order .active-programs {
     padding-top: 0px !important;
     font-weight: normal;
     font-size: 80%;
@@ -218,9 +234,9 @@
 /*.pos .orderlines{
     overflow-y:scroll;
 }*/
-.pos .order{
+.pos .product-screen .order{
     max-width:100% !important;
-    height:98%;
+    height:98.5%;
     padding-top:0px !important;
 }
 .fixTableHead {
@@ -228,29 +244,31 @@
       height: 84%;
       transition: all linear 150ms;
 }
-.pos .fixTableHead thead th {
+.pos .product-screen .fixTableHead thead th {
       position: sticky;
       top: 0;
+      background:#435c92;
+      color:white;
       transition: all linear 150ms;
       border: 1px solid black;
 }
-.pos .fixTableHead table {
+.pos .product-screen .fixTableHead table {
       border-collapse: collapse;
       width: 100%;
       transition: all linear 150ms;
 }
-.pos .fixTableHead th, .pos .fixTableHead td {
+.pos .product-screen .fixTableHead th, .pos .fixTableHead td {
       padding: 5px 7px;
       border: 1px solid black;
       transition: all linear 150ms;
 }
-.pos .fixTableHead th {
+.pos .product-screen .fixTableHead th {
     border: 1px solid black;
   background: #e2e2e2;
   transition: all linear 150ms;
 }
 
-.pos .category-list.simple {
+.pos .product-screen .category-list.simple {
     padding: 0px;
     background: #cecece;
     display: flex;
@@ -258,7 +276,7 @@
     width: 613px;
     overflow-x: scroll;
 }
-.pos .category-simple-button{
+.pos .product-screen .category-simple-button{
     min-width: 85px;
 }
 .search-bar-portal .search-box input{
@@ -274,4 +292,7 @@
 }*/
 .ProductInfoEditPopup{
     width:100%;
+}
+.ticket-button:hover ,.cash-move-button:hover,.oe_status:hover, .header-button:hover{
+    background: #8496bf !important;
 }

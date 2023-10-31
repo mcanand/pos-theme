@@ -1,0 +1,29 @@
+.screen .top-content .button{
+    background-color: white !important;
+    border-radius: 10px !important;
+}
+.screen .top-content .button.highlight, .pos .control-button.highlight, .pos .button.highlight{
+    background-color: #435c92 !important;
+}
+.paymentmethods .button{
+    background: white !important;
+    color: black !important;
+    margin-top: 5px;
+     border-radius: 10px !important;
+
+}
+.pos .paymentline{
+    background: #8496bf !important;
+    color: white !important;
+     border-radius: 10px !important;
+     margin-top: 5px;
+}
+.paymentline.selected {
+    background: #435c92 !important;
+    color: white;
+     margin-top: 5px;
+     border-radius: 10px !important;
+}
+.payment-screen .payment-buttons .button{
+     border-radius: 10px !important;
+}

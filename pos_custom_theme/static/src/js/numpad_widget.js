@@ -155,6 +155,10 @@ odoo.define('pos_custom_theme.numpad_widget', function (require) {
             var order = this.env.pos.get_order();
             order.set_freight_charge(inputPin)
         }
+        async ClickToPrint(){
+            if (!this.env.pos.get_order()) return;
+            this.showScreen('ReprintReceiptScreen', { order: this.env.pos.get_order(), fromProductScreen: true });
+        }
     };
     Registries.Component.extend(NumpadWidget, PosThemeNumpadWidget);
     return NumpadWidget;

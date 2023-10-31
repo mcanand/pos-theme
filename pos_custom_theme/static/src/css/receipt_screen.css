@@ -1,0 +1,29 @@
+.screen .top-content .button, .pos .receipt-screen .centered-content .button, .pos .pos-receipt-container > div{
+    border-radius: 10px !important;
+    background-color: #fff !important;
+}
+.screen .top-content .button.highlight, .pos .control-button.highlight, .pos .button.highlight{
+    background-color: #435c92 !important;
+    border-radius: 10px !important;
+    border:0px solid !important;
+}
+.receipt-screen .default-view .actions .buttons .button{
+    border-radius: 10px !important;
+}
+.receipt-screen .default-view .actions .send-email .input-email {
+    display: flex;
+    flex: 1;
+    border-radius: 10px !important;
+    background: white;
+    border: solid 1px rgb(209, 209, 209);
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+.receipt-screen .default-view .actions .send-email button.send{
+     border-radius: 10px !important;
+      background: #435c92 !important;
+      color:white !important;
+}
+.receipt-screen .default-view .actions .send-email input{
+    border-radius: 10px !important;
+}

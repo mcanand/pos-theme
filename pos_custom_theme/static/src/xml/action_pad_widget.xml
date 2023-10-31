@@ -35,7 +35,7 @@
             </button>
             <button class="button order-date" width="50">
                  Invoice No<br/>
-                <t t-esc="env.pos.get_invoice_number()"/>
+                <t t-esc="env.pos.get_order().get_invoice_number()"/>
             </button>
              <button class="button order-date" width="50">
                  Invoice Date<br/>

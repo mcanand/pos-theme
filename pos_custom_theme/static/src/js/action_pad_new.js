@@ -74,6 +74,7 @@ odoo.define('pos_custom_theme.ActionPadNew', function(require) {
           async ClickClearAllLines(){
             var order = this.env.pos.get_order()
             var order_lines = order.get_orderlines()
+            console.log(order)
             if(order && order_lines.length >= 1 && this.env.pos.config.module_pos_hr && this.env.pos.get_cashier().pin){
                 this.showPopup('NumberPopupCustom', {
                     isPassword: true,
@@ -85,9 +86,10 @@ odoo.define('pos_custom_theme.ActionPadNew', function(require) {
                 });
             }
             else{
-                order.destroy({ reason: 'abandon' });
-                posbus.trigger('order-deleted');
-                this.env.pos.add_new_order()
+                _.each(order_lines, function(line){
+                    order.remove_orderline(line)
+                });
+                order.trigger('change')
             }
         }
         async ClickPrevOrders(){

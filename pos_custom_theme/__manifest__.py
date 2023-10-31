@@ -8,7 +8,7 @@
     'sequence': 1,
     'summary': '',
     'description': "",
-    'depends': ['point_of_sale', 'pos_coupon', 'l10n_in', 'product'],
+    'depends': ['point_of_sale', 'pos_coupon', 'pos_restaurant', 'l10n_in', 'product'],
     'data': [
         'views/pos_config.xml',
         'views/product.xml',

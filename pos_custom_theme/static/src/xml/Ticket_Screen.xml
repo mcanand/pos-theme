@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+     <t t-inherit="point_of_sale.TicketScreen" t-inherit-mode="extension">
+         <xpath expr="//div" position="inside">
+             <t t-if="env.pos.config.themes == 'theme_new'">
+                 <link rel="stylesheet" href="/pos_custom_theme/static/src/css/pos_css.css" type="text/css"/>
+                 <link rel="stylesheet" href="/pos_custom_theme/static/src/css/ticket_screen.css" type="text/css"/>
+             </t>
+         </xpath>
+     </t>
+</templates>

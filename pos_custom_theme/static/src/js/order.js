@@ -23,7 +23,7 @@ odoo.define('waiter_pos.order', function(require) {
             init_from_JSON: function (json) {
                 this.freight_charge = json.freight_charge || 0
                 this.total_discount_amt = json.total_discount_amt || 0
-                _order_super.init_from_JSON.apply(this, arguments);
+                return _order_super.init_from_JSON.apply(this, arguments);
             },
             set_freight_charge: function(charge){
                 this.freight_charge = charge
@@ -60,11 +60,15 @@ odoo.define('waiter_pos.order', function(require) {
                 var result = _order_super.get_total_with_tax.apply(this, arguments);
                 return result + parseFloat(this.get_freight_charge());
             },
-
+            get_invoice_number: function(){
+               return this.pos.invoice_number
+            },
             export_as_JSON: function() {
+                this.pos.get_invoice_number();
                 let json = _order_super.export_as_JSON.apply(this, arguments);
                 json.freight_charge = this.get_freight_charge()
                 json.total_discount_amt = this.total_discount_amt
+                json.invoice_number = this.invoice_number
                 return json
             },
             export_for_printing: function () {
@@ -97,6 +101,14 @@ odoo.define('waiter_pos.order', function(require) {
      });
      var posmodel_super = models.PosModel.prototype;
      models.PosModel = models.PosModel.extend({
+            initialize: function(attributes, options){
+                let res = posmodel_super.initialize.apply(this, arguments);
+                this.get_invoice_number();
+            },
+            init_from_JSON: function (json) {
+                this.invoice_number = json.get_invoice_number || this.invoice_number;
+                let res = posmodel_super.init_from_JSON.apply(this, arguments);
+            },
             get_prev_unpaid_order: function(){
                 var orders = this.get_order_list();
                 var current_order = this.get_order();
@@ -115,7 +127,7 @@ odoo.define('waiter_pos.order', function(require) {
                     model: 'pos.order',
                     method: 'get_last_invoice',
                 }).then(function (result) {
-                    self.invoice = result
+                    self.invoice_number = result
                     self.trigger('change')
                 });
                 return self.invoice
@@ -131,6 +143,11 @@ odoo.define('waiter_pos.order', function(require) {
                     }
                 });
                 return prev_order
+            },
+            export_as_JSON: function() {
+                let json = posmodel_super.export_as_JSON.apply(this, arguments);
+                json.invoice_number = this.invoice_number
+                return json
             }
      });
 });

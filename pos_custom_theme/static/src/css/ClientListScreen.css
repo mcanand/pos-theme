@@ -1,0 +1,26 @@
+.screen .top-content .button{
+    border-radius: 10px;
+    background: white;
+}
+.pos .clientlist-screen .client-list th{
+    background:#435c92 !important;
+    color:white !important;
+
+}
+.pos .control-button.highlight, .pos .button.highlight{
+    background:#435c92 !important;
+    color:white !important;
+    border: 0px !important;
+}
+ .pos .clientlist-screen .client-list tr.highlight{
+    background:#8496bf !important;
+    color:white !important;
+ }
+  .pos .clientlist-screen .client-list tr:hover{
+        background:#8496bf !important;
+    color:white !important;
+  }
+.pos .clientlist-screen .client-details input, .pos .clientlist-screen .client-details select{
+    border-radius: 10px !important;
+    padding: 11px !important;
+}

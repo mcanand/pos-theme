@@ -25,5 +25,13 @@ class PosOrder(models.Model):
     @api.model
     def get_last_invoice(self):
         invoice = self.env['account.move'].search([('pos_order_ids','!=', False)], limit=1).name
-        return invoice if invoice else 'No Invoice'
+        if invoice.split('/')[-1]:
+            next_seq = (invoice.split('/')[-1]).replace(str(int(invoice.split('/')[-1])),str(int(invoice.split('/')[-1])+1))
+            new_seq = ''
+            for val in invoice.split('/')[:-1]:
+                new_seq = new_seq + '/' + val
+            new_seq = new_seq+'/'+next_seq
+            return new_seq
+        else:
+            return 'No Invoice'
 

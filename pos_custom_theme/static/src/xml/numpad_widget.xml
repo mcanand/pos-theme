@@ -81,7 +81,7 @@
                     <span>Reset Programs</span>
                 </button>
                  <button class="button button-theme" t-on-click="env.pos.add_new_order()" t-if="hasPriceControlRights">
-                    <i class="fa fa-hand-stop-o" role="img" aria-label="FastPay" title="FastPay"/>
+                    <i class="fa fa-hand-stop-o" role="img" aria-label="hold" title="hold"/>
                     Hold
                 </button>
                <br/>

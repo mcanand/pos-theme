@@ -1,0 +1,50 @@
+.ticket-screen .controls button{
+    border-radius: 10px !important;
+
+}
+.pos .ticket-screen .control-button{
+    border-radius: 10px !important;
+
+}
+.pos .ticket-screen .orders .order-row{
+    margin-top: 2px;
+    border-radius: 10px;
+    border: 0px solid;
+}
+.ticket-button.highlight {
+    background: #8496bf !important;
+}
+.ticket-button:hover {
+    background: #8496bf !important;
+}
+.pos .orders .order-row:hover, .pos .orders .order-row.highlight{
+    background-color:#8396bf !important;
+}
+.ticket-screen .controls button.highlight {
+    background: #435c92 !important;
+    border: solid 0px #64AF8A !important;
+}
+.pos .ticket-screen .orders .header-row{
+    background: #435c92 !important;
+}
+.ticket-screen .pos-search-bar .search input,.ticket-screen .pos-search-bar .filter{
+    border-radius: 10px;
+    color: #435c92 !important;
+}
+.ticket-screen .pos-search-bar .search ul{
+    border-radius: 10px !important;
+}
+.ticket-screen .pos-search-bar .search li.highlight {
+    background: #8496bf !important;
+    color: white !important;
+}
+.ticket-screen .pos-search-bar .search li{
+    color: black !important;
+}
+.ticket-screen .pos-search-bar .search li:hover, .ticket-screen .pos-search-bar .filter ul.options li:hover{
+    background: #8496bf !important;
+    color: white !important;
+}
+.ticket-screen .pos-search-bar .filter .options{
+    border-radius: 10px !important;
+}
