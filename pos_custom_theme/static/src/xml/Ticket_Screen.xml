@@ -7,5 +7,79 @@
                  <link rel="stylesheet" href="/pos_custom_theme/static/src/css/ticket_screen.css" type="text/css"/>
              </t>
          </xpath>
+         <xpath expr="//div[hasclass('order-row')]" position="replace">
+             <t t-if="env.pos.config.themes == 'default'">
+                 <div class="order-row" t-att-class="{ highlight: isHighlighted(order) }" t-on-click="trigger('click-order', order)">
+                                    <div class="col wide">
+                                        <div t-if="env.isMobile">Date</div>
+                                        <div><t t-esc="getDate(order)"></t></div>
+                                    </div>
+                                    <div class="col wide">
+                                        <div t-if="env.isMobile">Receipt Number</div>
+                                        <div><t t-esc="order.name"></t></div>
+                                    </div>
+                                    <div class="col">
+                                        <div t-if="env.isMobile">Customer</div>
+                                        <div><t t-esc="getCustomer(order)"></t></div>
+                                    </div>
+                                    <div t-if="showCardholderName()" class="col">
+                                        <div t-if="env.isMobile">Cardholder Name</div>
+                                        <div><t t-esc="getCardholderName(order)"></t></div>
+                                    </div>
+                                    <div class="col">
+                                        <div t-if="env.isMobile">Employee</div>
+                                        <div><t t-esc="getEmployee(order)"></t></div>
+                                    </div>
+                                    <div class="col end">
+                                        <div t-if="env.isMobile">Total</div>
+                                        <div><t t-esc="getTotal(order)"></t></div>
+                                    </div>
+                                    <div class="col narrow">
+                                        <div t-if="env.isMobile">Status</div>
+                                        <div><t t-esc="getStatus(order)"></t></div>
+                                    </div>
+                                    <div t-if="!shouldHideDeleteButton(order)" class="col very-narrow delete-button" name="delete" t-on-click.stop="trigger('delete-order', order)">
+                                        <i class="fa fa-trash" aria-hidden="true"/><t t-if="env.isMobile"> Delete</t>
+                                    </div>
+                                    <div t-else="" class="col very-narrow"></div>
+                                </div>
+             </t>
+             <t t-if="env.pos.config.themes == 'theme_new'">
+                   <div class="order-row" t-if="!order.finalized" t-att-class="{ highlight: isHighlighted(order) }" t-on-click="trigger('click-order', order)">
+                                    <div class="col wide">
+                                        <div t-if="env.isMobile">Date</div>
+                                        <div><t t-esc="getDate(order)"></t></div>
+                                    </div>
+                                    <div class="col wide">
+                                        <div t-if="env.isMobile">Receipt Number</div>
+                                        <div><t t-esc="order.name"></t></div>
+                                    </div>
+                                    <div class="col">
+                                        <div t-if="env.isMobile">Customer</div>
+                                        <div><t t-esc="getCustomer(order)"></t></div>
+                                    </div>
+                                    <div t-if="showCardholderName()" class="col">
+                                        <div t-if="env.isMobile">Cardholder Name</div>
+                                        <div><t t-esc="getCardholderName(order)"></t></div>
+                                    </div>
+                                    <div class="col">
+                                        <div t-if="env.isMobile">Employee</div>
+                                        <div><t t-esc="getEmployee(order)"></t></div>
+                                    </div>
+                                    <div class="col end">
+                                        <div t-if="env.isMobile">Total</div>
+                                        <div><t t-esc="getTotal(order)"></t></div>
+                                    </div>
+                                    <div class="col narrow">
+                                        <div t-if="env.isMobile">Status</div>
+                                        <div><t t-esc="getStatus(order)"></t></div>
+                                    </div>
+                                    <div t-if="!shouldHideDeleteButton(order)" class="col very-narrow delete-button" name="delete" t-on-click.stop="trigger('delete-order', order)">
+                                        <i class="fa fa-trash" aria-hidden="true"/><t t-if="env.isMobile"> Delete</t>
+                                    </div>
+                                    <div t-else="" class="col very-narrow"></div>
+                                </div>
+             </t>
+         </xpath>
      </t>
 </templates>

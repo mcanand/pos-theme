@@ -57,7 +57,7 @@
                     <span>Freight</span>
                  </button>
                 <button class="button button-theme" t-if="hasPriceControlRights">
-
+                    <SetSaleOrderButton/>
                 </button>
                <br/>
                <button class="input-button number-char" t-on-click="sendInput('4')">4</button>

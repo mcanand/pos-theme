@@ -60,14 +60,14 @@
 <!--                </t>-->
 <!--              </td>-->
                <td>
-                   <t t-esc="env.pos.format_currency(props.line.get_unit_display_price())" />
+                   <t t-esc="env.pos.format_currency_no_symbol(props.line.get_unit_display_price())" />
                </td>
               <td>
-                  <t t-esc="env.pos.format_currency(props.line.get_tax())"/>
+                  <t t-esc="env.pos.format_currency_no_symbol(props.line.get_tax())"/>
               </td>
                <td>
                     <span class="price">
-                        <t t-esc="env.pos.format_currency(props.line.get_price_with_tax())"/>
+                        <t t-esc="env.pos.format_currency_no_symbol(props.line.get_price_with_tax())"/>
                     </span>
                </td>
           </tr>

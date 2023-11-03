@@ -157,7 +157,10 @@
     background-color: #d3d3d3;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
-    margin-bottom: -6px;
+    margin-bottom: -13px;
+}
+.pos .ActionPadNew{
+    padding-bottom: 7px;
 }
 
 .pos .product-screen .actionpadnew button {
@@ -295,4 +298,45 @@
 }
 .ticket-button:hover ,.cash-move-button:hover,.oe_status:hover, .header-button:hover{
     background: #8496bf !important;
+}
+.ticket-button{
+    margin-left: 20px ;
+}
+.pos .pos-branding{
+    justify-content: flex-start !important;
+}
+
+.product_custom_popup_new{
+    position: absolute;
+    background: white;
+    width: 555px;
+    z-index: 1;
+    max-height: 401px;
+    margin-top: 44px;
+    border-radius: 10px;
+    padding: 5px;
+    display:none;
+    overflow-y:scroll;
+    border:1px solid;
+}
+.product_custom_popup_new table{
+    width:100%;
+}
+.product_custom_popup_new table th,.product_custom_popup_new table td{
+    padding-top: 11px;
+    padding-bottom: 10px;
+    border: 1px solid black;
+    font-size: 13px;
+    padding-left: 4px;
+    padding-right: 4px;
+    cursor: pointer;
+}
+.product_custom_popup_new table th{
+    background:#435c92;
+    color: white;
+}
+.product_custom_popup_new table tr:hover{
+    background: #8496bf;
+    color: white;
+    border-radius: 10px;
 }

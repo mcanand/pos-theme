@@ -7,6 +7,11 @@ class ProductProduct(models.Model):
 
     local_name = fields.Char()
 
+    def search_custom_product(self, vals):
+        products = self.env['product.product'].search([('name', 'ilike', vals.get('key')),('available_in_pos','=', True)])
+        print([x.name for x in products])
+        print(products.ids)
+        return products.ids
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'

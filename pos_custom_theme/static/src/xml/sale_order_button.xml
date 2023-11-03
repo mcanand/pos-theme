@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+     <t t-inherit="pos_sale.SetSaleOrderButton" t-inherit-mode="extension">
+         <xpath expr="//div" position="replace">
+             <t t-if="env.pos.config.themes == 'default'">
+                 <div class="control-button o_sale_order_button">
+                    <i class="fa fa-link" role="img" aria-label="Set Sale Order"
+                       title="Set Sale Order" /> Quotation/Order
+                </div>
+             </t>
+             <t t-if="env.pos.config.themes == 'theme_new'">
+                 <i class="fa fa-link" role="img" aria-label="Set Sale Order"
+                       title="Set Sale Order" />
+                    <span> </span>
+                    <span>Sale Order</span>
+             </t>
+         </xpath>
+    </t>
+</templates>

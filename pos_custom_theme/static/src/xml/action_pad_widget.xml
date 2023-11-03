@@ -27,15 +27,15 @@
         </xpath>
      </t>
     <t t-name="ActionPadNew" owl="1">
-        <span>
+        <span class="ActionPadNew">
         <div class="actionpadnew">
             <button class="button order-number" width="50">
                 Order No<br/>
                 <t t-esc="env.pos.get_order().sequence_number"/>
             </button>
-            <button class="button order-date" width="50">
+            <button class="button order-date invoice_number" width="50" t-on-click="render()">
                  Invoice No<br/>
-                <t t-esc="env.pos.get_order().get_invoice_number()"/>
+                <t t-esc="invoice"/>
             </button>
              <button class="button order-date" width="50">
                  Invoice Date<br/>
@@ -91,9 +91,50 @@
         </div>
         <div class="actionpadnew">
             <button class="button button-input">
-                <input type="text" value="1" id="InputBarcodeUpdateQty"/>
+                <input type="text" t-att-value="selected_product.display_name" placeholder="search product..." id="SelectProduct" t-on-keyup="onKeySelectProduct"/>
             </button>
-            <button class="button" t-on-click="UpdateQtyBarcodeInput()">
+            <div class="product_custom_popup_new">
+                <span t-on-click="PopupClose"><i class="fa fa-times" style="float:right;padding:5px;cursor:pointer;color:red;font-size:15px;"/> </span>
+                <table>
+                    <tr>
+                        <th>Code</th>
+                        <th>Item</th>
+                        <th>unit</th>
+                        <th>Rate</th>
+                        <th>Cost</th>
+                        <th>Stock</th>
+                    </tr>
+                    <t t-foreach="products" t-as="product">
+                        <t t-if="product">
+                            <tr t-on-click="SelectProduct(product)">
+                                <td>
+                                    <t t-if="product.barcode" t-esc="product.barcode"/>
+                                </td>
+                                <td>
+                                    <t t-if="product.display_name" t-esc="product.display_name"/>
+                                </td>
+                                <td>
+                                    <t t-if="product.uom_id[1]" t-esc="product.uom_id[1]"/>
+                                </td>
+                                <td>
+                                    <t t-if="product.lst_price" t-esc="env.pos.format_currency_no_symbol(product.lst_price)"/>
+                                </td>
+                                <td>
+                                    <t t-if="product.standard_price" t-esc="env.pos.format_currency_no_symbol(product.standard_price)"/>
+                                </td>
+                                <td>
+                                    <t t-if="product.qty_available" t-esc="product.qty_available"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+
+                </table>
+            </div>
+            <button class="button button-input">
+                <input type="text" value="1" id="InputProductUpdateQty" t-on-keyup="AddOrderLineWithQty()"/>
+            </button>
+            <button class="button" t-on-click="AddOrderLineWithQtyButton()">
                 <i class="fa fa-plus"/>
             </button>
         </div>
